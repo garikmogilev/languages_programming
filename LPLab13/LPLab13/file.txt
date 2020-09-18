@@ -1,4 +1,4 @@
-z =    x  * ( x+y);
+z = x  * ( x+y);
  print 'контрольный пример =    test literal  '  ;     
     integer function fi(integer x , integer y)
     {
