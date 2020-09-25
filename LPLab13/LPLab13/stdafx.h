@@ -1,5 +1,6 @@
 #pragma once
-#pragma warning(suppress : 4996)
+#pragma warning(disable : 4996)
+
 #include <tchar.h>
 #include <time.h>
 #include <wchar.h>
@@ -10,10 +11,11 @@
 #include "Parm.h"			//	обработка параметров
 #include "Log.h"			//	работа с протоколом
 #include "In.h"				//	ввод исходного файла
-#include "LT.h"				//	обработка лексем
-#include "FST.h"
-//#include "Out.h"
 #include "DP.h"				//	обработка данных
+#include "FST.h"
+#include "Out.h"
+#include "LT.h"
+#include "IT.h"
 
 //#define TEST1				//  проверка ERROR
 //#define TEST2				//  проверка PARM

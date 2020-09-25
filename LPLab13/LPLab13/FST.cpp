@@ -37,7 +37,7 @@ namespace FST
 		bool rc = false;
 		std::swap(rstates, fst.rstates);						// смена массивов 
 
-		for (short i = 0; i < fst.nstates; i++)
+		for (short i = 0; (i < fst.nstates) && !rc; i++)
 		{
 			if (rstates[i] == fst.position)
 				for (short j = 0; j < fst.nodes[i].n_relation; j++)
@@ -46,6 +46,7 @@ namespace FST
 					{
 						fst.rstates[fst.nodes[i].relations[j].nnode] = fst.position + 1;
 						rc = true;
+						break;
 					};
 				};
 		};
@@ -63,7 +64,7 @@ namespace FST
 		{
 			fst.position++;										// продинули позицию
 			rc = step(fst, rstates);							// один шаг автомата
-		}
+ 		}
 
 		delete[] rstates;
 		return (rc ? (fst.rstates[fst.nstates - 1] == lstring) : rc);

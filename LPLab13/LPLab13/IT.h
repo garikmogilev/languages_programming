@@ -35,7 +35,7 @@ namespace IT	// таблица идентификатов
 		Entry(const char* parrentFunc, const char* id, IDDATATYPE iddatatype, IDTYPE idtype);
 	};
 
-	struct IdTable // экземпляр таблицы идентификаторов
+	struct IdTable					// экземпляр таблицы идентификаторов
 	{
 		int maxsize;				// емкость таблицы идентификаторов < TI_MAXSIZE
 		int current_size;			// текущий размер таблицы идентификаторов < maxsize

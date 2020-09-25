@@ -8,6 +8,8 @@ namespace Error
 	/* серии ошибок |	100	- 109	|	ошибки параметров					*/
 	/*				|---------------|---------------------------------------*/
 	/*				|	110	- 119	|	ошибки открытия и чтения файлов		*/
+	/*				|---------------|---------------------------------------*/
+	/*				|	120	- 129	|	ошибки при анализе лексем			*/
 	/************************************************************************/
 
 	ERROR errors[ERROR_MAX_ENTRY] = //таблица ошибок
@@ -26,11 +28,12 @@ namespace Error
 		ERROR_ENTRY(110, "Ошибка при открытии файла с исходным кодом (-in)"),
 		ERROR_ENTRY(111, "Недопустимый символ в исходном файле (-in)"),
 		ERROR_ENTRY(112, "Ошибка при создании файла протокола(-log)"),
-		ERROR_ENTRY(113,"Ошибка при открытии файла для вывода"), 
+		ERROR_ENTRY(113,"Ошибка при открытии файла для вывода"),
 		ERROR_ENTRY(114,"Ошибка, в расстановке символа для литералов"),
 		ERROR_ENTRY_NODEF(115),
 		ERROR_ENTRY_NODEF(116), ERROR_ENTRY_NODEF(117), ERROR_ENTRY_NODEF(118), ERROR_ENTRY_NODEF(119),
-		ERROR_ENTRY_NODEF10(120), ERROR_ENTRY_NODEF10(130), ERROR_ENTRY_NODEF10(140), ERROR_ENTRY_NODEF10(150),
+		ERROR_ENTRY(120,"Превышен максимальное кол-во лексем"),
+		ERROR_ENTRY_NODEF10(130), ERROR_ENTRY_NODEF10(140), ERROR_ENTRY_NODEF10(150),
 		ERROR_ENTRY_NODEF10(160), ERROR_ENTRY_NODEF10(170), ERROR_ENTRY_NODEF10(180), ERROR_ENTRY_NODEF10(190),
 		ERROR_ENTRY_NODEF100(200), ERROR_ENTRY_NODEF100(300), ERROR_ENTRY_NODEF100(400), ERROR_ENTRY_NODEF100(500),
 		ERROR_ENTRY_NODEF100(600), ERROR_ENTRY_NODEF100(700), ERROR_ENTRY_NODEF100(800), ERROR_ENTRY_NODEF100(900)

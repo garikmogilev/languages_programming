@@ -3,8 +3,7 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	setlocale(LC_ALL, "rus");
-
-
+		 
 #ifdef TEST1
 	std::cout << "---- тест Error::geterror ----" << std::endl << std::endl;
 	try { throw ERROR_THROW(-1); }
@@ -86,10 +85,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		In::IN in = In::getin(parm.in);
 		Log::WriteIn(log, in);
 		Log::WriteLine(log, L"Файл: ", L"считан ", L"без ", L"ошибок ", L"");
-		Out::searchСharacterString(in, parm.out, log.stream);
+		GM::dataProceesing(in.text, parm.out, log.stream);
 		Log::Close(log);
-		//std::cout << in.text;
-
+		std::cout << in.text;
 	}
 	catch (Error::ERROR e)
 	{

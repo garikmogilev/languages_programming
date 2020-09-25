@@ -1,13 +1,13 @@
 #pragma once
 #include <iostream>
 #include <tchar.h>
-
+#include "LT.h"
 
 namespace FST
 {
 	struct RELATION							//11 ребро :символ->вершина графа переходов КА
 	{
-		char symbol;						// символ перехода
+		unsigned char symbol;				// символ перехода
 		short nnode;						// номер смежной вершины
 		RELATION(char с = 0x00,				// символ перехода
 			short ns = NULL);				// новое состояние												

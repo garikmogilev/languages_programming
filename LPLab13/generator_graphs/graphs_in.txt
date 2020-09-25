@@ -1,0 +1,22 @@
+
+#   $abcdefghijklmnopqrstuvwxyz											#		LEX_ID				#
+#	integer																#		LEX_INTEGER			#
+#	string																#		LEX_STRING			#
+#	declare																#		LEX_DECLARE			#
+#	function															#		LEX_FUNCTION		#
+#	return																#		LEX_RETURN			#
+#	print																#		LEX_PRINT			#
+#	main																#		LEX_MAIN			#
+#	1234567890															#		LEX_LITERAL			#
+#	'abcdefghklmnopqrstuvwxyz1234567890'								#		LEX_LITERAL			#
+#   +																	#		LEX_PLUS			#
+#   -																	#		LEX_MINUS			#
+#	*																	#		LEX_STAR			#
+#	/																	#		LEX_DIRSLASH		#
+#	;																	#		LEX_SEMICOLON		#
+#	,																	#		LEX_COMMA			#
+#	{																	#		LEX_LEFTBRACE		#
+#	}																	#		LEX_RIGHTBRACE		#
+#	(																	#		LEX_LEFTHESIS		#
+#	)																	#		LEX_RIGHTESIS		#
+#	=																	#		LEX_EQUALS			#	

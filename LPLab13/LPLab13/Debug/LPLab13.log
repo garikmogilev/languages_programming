@@ -1,58 +1,37 @@
-﻿Сборка начата 15.09.2020 14:05:59.
-Уровень детализации журнала: Normal.     1>Проект "D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LPLab13.vcxproj" в узле 2 (целевые объекты Build).
+﻿Сборка начата 24.09.2020 15:23:20.
+Уровень детализации журнала: Normal.     1>Проект "D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\LPLab13.vcxproj" в узле 2 (целевые объекты Build).
      1>InitializeBuildStatus:
-         Обращение к "Debug\LPLab13.tlog\unsuccessfulbuild".
+         Создание "Debug\LPLab13.tlog\unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.26.28801\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /analyze- /FC /errorReport:prompt /wd4996 DP.cpp LP_13.cpp LT.cpp Parm.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /analyze- /FC /errorReport:prompt /wd4996 DP.cpp
          DP.cpp
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,12): error C2653: Out: не является именем класса или пространства имен
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,8): error C2065: OUT: необъявленный идентификатор
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,12): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "out"
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,12): error C2065: out: необъявленный идентификатор
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,29): error C2653: Out: не является именем класса или пространства имен
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,23): error C3861: getout: идентификатор не найден
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(9,3): error C2065: out: необъявленный идентификатор
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(23,14): error C2065: out: необъявленный идентификатор
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(23,5): error C3861: writeOut: идентификатор не найден
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(37,13): error C2653: Out: не является именем класса или пространства имен
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(37,14): error C2065: out: необъявленный идентификатор
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(37,8): error C3861: close: идентификатор не найден
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(49,18): error C2065: GRAPH: необъявленный идентификатор
-         LP_13.cpp
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LP_13.cpp(89,30): error C2653: Out: не является именем класса или пространства имен
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LP_13.cpp(89,8): error C3861: searchСharacterString: идентификатор не найден
-         LT.cpp
-     1>D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LT.cpp(11,10): warning C4101: table: неиспользованная локальная переменная
-         Parm.cpp
-         Создание кода...
-     1>Сборка проекта "D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LPLab13.vcxproj" завершена (целевые объекты Build) с ошибкой.
+     1>D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\DP.cpp(17,14): warning C4101: a: неиспользованная локальная переменная
+     1>D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\DP.cpp(83): warning C4715: GM::token_rekognizer: значение возвращается не при всех путях выполнения
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\Debug\LPLab13.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\Debug\LPLab13.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\Debug\LPLab13.lib" /MACHINE:X86 Debug\DP.obj
+         Debug\Error.obj
+         Debug\FST.obj
+         Debug\In.obj
+         Debug\IT.obj
+         Debug\Log.obj
+         Debug\LP_13.obj
+         Debug\LT.obj
+         Debug\Out.obj
+         Debug\Parm.obj
+         LPLab13.vcxproj -> D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\Debug\LPLab13.exe
+       FinalizeBuildStatus:
+         Файл "Debug\LPLab13.tlog\unsuccessfulbuild" удаляется.
+         Обращение к "Debug\LPLab13.tlog\LPLab13.lastbuildstate".
+     1>Сборка проекта "D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\LPLab13.vcxproj" завершена (целевые объекты Build).
 
-Ошибка сборки.
+Сборка успешно завершена.
 
-       "D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LPLab13.vcxproj" (целевой объект Build ) (1) ->
+       "D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\LPLab13.vcxproj" (целевой объект Build ) (1) ->
        (Целевой объект ClCompile) -> 
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LT.cpp(11,10): warning C4101: table: неиспользованная локальная переменная
+         D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\DP.cpp(17,14): warning C4101: a: неиспользованная локальная переменная
+         D:\Университет\Лабараторные\ЯП\Выполненные\LPLab13\LPLab13\DP.cpp(83): warning C4715: GM::token_rekognizer: значение возвращается не при всех путях выполнения
 
+    Предупреждений: 2
+    Ошибок: 0
 
-       "D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LPLab13.vcxproj" (целевой объект Build ) (1) ->
-       (Целевой объект ClCompile) -> 
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,12): error C2653: Out: не является именем класса или пространства имен
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,8): error C2065: OUT: необъявленный идентификатор
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,12): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "out"
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,12): error C2065: out: необъявленный идентификатор
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,29): error C2653: Out: не является именем класса или пространства имен
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(8,23): error C3861: getout: идентификатор не найден
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(9,3): error C2065: out: необъявленный идентификатор
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(23,14): error C2065: out: необъявленный идентификатор
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(23,5): error C3861: writeOut: идентификатор не найден
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(37,13): error C2653: Out: не является именем класса или пространства имен
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(37,14): error C2065: out: необъявленный идентификатор
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(37,8): error C3861: close: идентификатор не найден
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\DP.cpp(49,18): error C2065: GRAPH: необъявленный идентификатор
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LP_13.cpp(89,30): error C2653: Out: не является именем класса или пространства имен
-         D:\Университет\Лабараторные\ЯП\LPLab13\LPLab13\LP_13.cpp(89,8): error C3861: searchСharacterString: идентификатор не найден
-
-    Предупреждений: 1
-    Ошибок: 15
-
-Прошло времени 00:00:03.66
+Прошло времени 00:00:01.35

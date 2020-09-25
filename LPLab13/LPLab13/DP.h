@@ -5,12 +5,14 @@ namespace  GM
 {
 	struct Data
 	{
-		bool result;
-		char* text;
+		bool result = false;
+		char* text = nullptr;
 		int lines = 1;
 		int positionErr = 0;
 	};
-
+	
+	char token_rekognizer(char* string);
 	void dataProceesing(unsigned char* text, wchar_t* out, std::fstream* stream);
-	void checkSetOfData(unsigned char* start, unsigned char* end, GM::Data* ptrData);
+	char checkSetOfData(unsigned char* start, unsigned char* end, GM::Data* ptrData);
+	bool alphaCirillicDigit(char symbol);
 }

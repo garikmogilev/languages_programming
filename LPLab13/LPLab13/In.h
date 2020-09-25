@@ -20,7 +20,7 @@
  IN::S,IN::L,IN::L,IN::L,IN::L,IN::L,IN::L,IN::T,IN::E,IN::E,IN::E,IN::E,IN::E,IN::E,IN::E,IN::T, /*2*/\
  IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::L,IN::E,IN::L,IN::E,IN::L,IN::L, /*3*/\
  IN::L,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T, /*4*/\
- IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::L,IN::L,IN::L,IN::L,IN::L, /*5*/\
+ IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::L,IN::L,IN::L,IN::T,IN::T, /*5*/\
  IN::L,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T, /*6*/\
  IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::T,IN::E,IN::L,IN::E,IN::L,IN::F, /*7*/\
      																								   \
@@ -39,7 +39,7 @@ namespace In
 {
     struct	IN										// исходные данные
     {
-        enum { F,T,I,E,S,L };		                // T - допустимый символ. F - недопустимый,	I -	игнорировать, иначе заменить, E - выражения арифм/лог, S - пробел, L - литералы
+        enum { F, T, I, E, S, L };		                // T - допустимый символ. F - недопустимый,	I -	игнорировать, иначе заменить, E - выражения арифм/лог, S - пробел, L - литералы
         int	size = 0;								//	размер исходного кода													
         int	lines = 1;								//	количество строк														
         int	ignor = 0;								//	количество проигнорированных символов										
