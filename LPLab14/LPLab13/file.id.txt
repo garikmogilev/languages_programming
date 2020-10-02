@@ -1,0 +1,33 @@
+visible        variable       type           value int      value str      
+fi             z              integer        0              -              
+fs             c              string         -              0              
+main           x              integer        0              -              
+main           y              integer        0              -              
+main           z              integer        0              -              
+main           sa             string         -              0              
+main           sb             string         -              0              
+main           sc             string         -              0              
+
+function       visible        type           
+fi                            integer        
+fs                            string         
+substr         ::             string         
+main                          integer        
+strlen         ::             integer        
+
+visible        parametr       type           
+fi             x              integer        
+fi             y              integer        
+fs             a              string         
+fs             b              string         
+substr         a              string         
+substr         p              integer        
+substr         n              integer        
+strlen         p              string         
+
+type           value          size           
+integer        1              ----           
+integer        3              ----           
+integer        5              ----           
+string         1234567890     12             
+integer        0              ----           

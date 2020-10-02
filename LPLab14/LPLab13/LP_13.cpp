@@ -88,9 +88,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		Log::WriteLine(log, L"Файл: ", L"считан ", L"без ", L"ошибок ", L"");
 		LT::LexTable tableLEX = LT::Сreate(LT_MAXSIZE);
 		IT::IdTable idtableID = IT::Create(TI_MAXSIZE);
-		GM::dataProcesing(in.text, parm.out, log.stream, &tableLEX, &idtableID);
-		
-		Log::Close(log);
+		GM::dataProcesing(in.text, log.stream, &tableLEX, &idtableID);
+		LT::PrintTableLex(&tableLEX, parm.out);
+		IT::PrintIdTable(PARM_ID_DEFAULT_EXT, idtableID);
+		Log::Close(log); 
 
 	}
 	catch (Error::ERROR e)

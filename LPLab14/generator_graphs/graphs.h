@@ -4,7 +4,7 @@
 		{\
 				FST::FST graph_literal(string,3,\
 				FST::NODE(1,FST::RELATION('\'', 1)),\
-				FST::NODE(35,\
+				FST::NODE(67,\
 					FST::RELATION('a',1),\
 					FST::RELATION('b',1),\
 					FST::RELATION('c',1),\
@@ -39,6 +39,38 @@
 					FST::RELATION('8',1),\
 					FST::RELATION('9',1),\
 					FST::RELATION('0',1),\
+					FST::RELATION(' ',1),\
+					FST::RELATION('à',1),\
+					FST::RELATION('á',1),\
+					FST::RELATION('â',1),\
+					FST::RELATION('ã',1),\
+					FST::RELATION('ä',1),\
+					FST::RELATION('å',1),\
+					FST::RELATION('¸',1),\
+					FST::RELATION('æ',1),\
+					FST::RELATION('ç',1),\
+					FST::RELATION('è',1),\
+					FST::RELATION('ê',1),\
+					FST::RELATION('ë',1),\
+					FST::RELATION('ì',1),\
+					FST::RELATION('í',1),\
+					FST::RELATION('î',1),\
+					FST::RELATION('ï',1),\
+					FST::RELATION('ð',1),\
+					FST::RELATION('ñ',1),\
+					FST::RELATION('ò',1),\
+					FST::RELATION('ó',1),\
+					FST::RELATION('ô',1),\
+					FST::RELATION('õ',1),\
+					FST::RELATION('ö',1),\
+					FST::RELATION('÷',1),\
+					FST::RELATION('ø',1),\
+					FST::RELATION('ù',1),\
+					FST::RELATION('ú',1),\
+					FST::RELATION('ü',1),\
+					FST::RELATION('ý',1),\
+					FST::RELATION('þ',1),\
+					FST::RELATION('ÿ',1),\
 					FST::RELATION('\'',2)),\
 				FST::NODE());\
 		if (result = execute(graph_literal)) {\
@@ -185,18 +217,6 @@
 		}\
 		\
 }\
-		case '^':\
-		{\
-				FST::FST graph(string,1,\
-				FST::NODE(1,\
-					FST::RELATION('^',0)\
-				));\
-		if (result = execute(graph)) {\
-			return '^';\
-			break;\
-		}\
-		\
-}\
 		case 'd' :\
 		{\
 				FST::FST graph_declare(string,8,\
@@ -245,14 +265,6 @@
 				FST::NODE());\
 		if (result = execute(graph_integer)) {\
 			return LEX_INTEGER;\
-			break;\
-		}\
-				FST::FST graph_if(string,3,\
-				FST::NODE(1, FST::RELATION('i',1)),\
-				FST::NODE(1, FST::RELATION('f',2)),\
-				FST::NODE());\
-		if (result = execute(graph_if)) {\
-			return LEX_IF;\
 			break;\
 		}\
 		\
@@ -304,6 +316,30 @@
 }\
 		case 's' :\
 		{\
+				FST::FST graph_strlen(string,7,\
+				FST::NODE(1, FST::RELATION('s',1)),\
+				FST::NODE(1, FST::RELATION('t',2)),\
+				FST::NODE(1, FST::RELATION('r',3)),\
+				FST::NODE(1, FST::RELATION('l',4)),\
+				FST::NODE(1, FST::RELATION('e',5)),\
+				FST::NODE(1, FST::RELATION('n',6)),\
+				FST::NODE());\
+		if (result = execute(graph_strlen)) {\
+			return LEX_ID;\
+			break;\
+		}\
+				FST::FST graph_substr(string,7,\
+				FST::NODE(1, FST::RELATION('s',1)),\
+				FST::NODE(1, FST::RELATION('u',2)),\
+				FST::NODE(1, FST::RELATION('b',3)),\
+				FST::NODE(1, FST::RELATION('s',4)),\
+				FST::NODE(1, FST::RELATION('t',5)),\
+				FST::NODE(1, FST::RELATION('r',6)),\
+				FST::NODE());\
+		if (result = execute(graph_substr)) {\
+			return LEX_ID;\
+			break;\
+		}\
 				FST::FST graph_string(string,7,\
 				FST::NODE(1, FST::RELATION('s',1)),\
 				FST::NODE(1, FST::RELATION('t',2)),\

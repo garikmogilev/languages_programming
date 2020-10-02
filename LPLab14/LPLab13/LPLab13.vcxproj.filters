@@ -79,6 +79,9 @@
     <Text Include="file.txt.log">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="file.id.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="file.txt.out">

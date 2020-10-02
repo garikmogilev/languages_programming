@@ -1,5 +1,7 @@
 
 #   $abcdefghijklmnopqrstuvwxyz											#		LEX_ID				#
+#	strlen																#		LEX_ID				#
+#	substr																#		LEX_ID				#
 #	integer																#		LEX_INTEGER			#
 #	string																#		LEX_STRING			#
 #	declare																#		LEX_DECLARE			#
@@ -8,7 +10,7 @@
 #	print																#		LEX_PRINT			#
 #	main																#		LEX_MAIN			#
 #	1234567890															#		LEX_LITERAL			#
-#	'abcdefghklmnopqrstuvwxyz1234567890'								#		LEX_LITERAL			#
+#	'abcdefghklmnopqrstuvwxyz1234567890 אבגדהו¸זחטךכלםמןנסעףפץצקרשתü‎‏ÿ'#		LEX_LITERAL			#
 #   +																	#		LEX_PLUS			#
 #   -																	#		LEX_MINUS			#
 #	*																	#		LEX_STAR			#

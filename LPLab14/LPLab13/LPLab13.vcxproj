@@ -168,6 +168,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="file.id.txt" />
     <Text Include="file.txt" />
     <Text Include="file.txt.log" />
   </ItemGroup>

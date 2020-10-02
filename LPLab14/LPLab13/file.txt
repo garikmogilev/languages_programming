@@ -1,3 +1,4 @@
+ print 'контрольный пример';
 integer function fi(integer x, integer y)
 {
  declare  integer z;

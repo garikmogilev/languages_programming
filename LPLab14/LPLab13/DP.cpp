@@ -1,116 +1,136 @@
 #include "stdafx.h"
-#define TOKEN token_rekognizer(string)
+#define TOKEN token_rekognizer(string, &entryIT);
 
 #include "../generator_graphs/graphs.h"
 
 
 namespace GM
 {
-	void dataProcesing(unsigned char* text, wchar_t* out, std::fstream* stream, LT::LexTable* lextable,IT::IdTable* idtable)
+	void dataProcesing(unsigned char* text, std::fstream* stream, LT::LexTable* lextable, IT::IdTable* idtable)
 	{
-		std::fstream fout(out, std::ios::out);
+		
 		unsigned char* start = text;
 		unsigned char* end = start;
-		bool switch_string = false;
-		int count_lines = 0;
-		int count_lexems = 0;
-		char token;
-		char prefix[ID_MAXSIZE + 1];
-		char identificator[ID_MAXSIZE + 1];
-
+		Data data;
+		IT::Entry entryIT;
 		while (true)
 		{
 			if (!*end) break;
 
-				if ((!alphaCirillicDigit (*end) || !isalnum(*start)) && !switch_string)
+				if ((!alphaCirillicDigit (*end) || !isalnum(*start)) && !data.switch_string)
 				{
 					char* string = new  char[end - start + 2];
 					strncpy(string, (char*)start, end - start);
 					string[end - start] = STR_ENDL;
 
-					token = token_rekognizer(string, idtable);
+					data.token = TOKEN;												// распознать лексему
 
-					LT::Entry entry = LT::Create(token, count_lines);
-					//IT::GetEntry 
-					if (entry.lexema[0] == LEX_ID) {
-						strncpy(idtable->table->id, string, ID_MAXSIZE);
-						entry.idxTI = count_lexems;
-					}
-					else
-						entry.idxTI = LT_TI_NULLXDX;
- 
-					LT::Add(lextable, entry);
+					LT::Entry entryLT = LT::Create(data.token, data.count_lines, data.count);
+					memset(entryIT.prefix, 0x00, PREFIX_SIZE);
+					memset(entryIT.id, 0x00, ID_MAXSIZE);
+					memset(entryIT.extFunct, 0x00, PREFIX_SIZE);
 
+					if (data.token == LEX_RIGHTBRACE) { data.visibility = false, data.global = false; }
+					if (data.token == LEX_DECLARE) data.global = true;
 
-					if (entry.lexema[0] == LEX_ID) {
-						if ((idtable->table[idtable->current_size].iddatatype) && (idtable->table[idtable->current_size].idtype))
-							strncpy_s(idtable->table[idtable->current_size++].id, string, ID_MAXSIZE);
-						else if (idtable->table[idtable->current_size].iddatatype)
-						{
-							idtable->table[idtable->current_size].idtype = IT::IDTYPE::P;
-							strncpy_s(idtable->table[idtable->current_size++].id, string, ID_MAXSIZE);
+					if (data.token == LEX_LITERAL)
+					{
+						if (isdigit(string[0])) {
+							int temp = atoi(string);
+							if(temp > 2147483647 && temp < -2147483647)
+								throw ERROR_THROW(121);
+							if (IsLiteral(*idtable, temp) == LT_TI_NULLXDX  || !temp) {
+								entryIT.idtype = IT::IDTYPE::L;
+								entryIT.iddatatype = IT::IDDATATYPE::INT;
+								entryIT.value.vint = temp;
+								IT::Add(*idtable, entryIT);
+								entryIT.iddatatype = IT::IDDATATYPE::NUL;
+								entryIT.idtype = IT::IDTYPE::N;
+							}
 						}
 						else
-						{
-							idtable->table[idtable->current_size].idtype = IT::IDTYPE::L;
+						{	
+							int size = strlen(string);
+							char temp[TI_STR_MAXSIZE];
+							strncpy_s(temp, (string + 1), size - 2);
+							if (size > TI_STR_MAXSIZE)
+								throw ERROR_THROW(123);
+							if (IsLiteral(*idtable, temp) == LT_TI_NULLXDX) {
+								entryIT.idtype = IT::IDTYPE::L;
+								entryIT.iddatatype = IT::IDDATATYPE::STR;
+								strcpy_s(entryIT.value.vstr->str,temp);
+								entryIT.value.vstr->len = (char)(size);
+								IT::Add(*idtable, entryIT);
+								entryIT.iddatatype = IT::IDDATATYPE::NUL;
+								entryIT.idtype = IT::IDTYPE::N;
+							}
 						}
-						std::cout << idtable->table[idtable->current_size - 1].id << std::endl;
-					}
-					start = end;
-					count_lexems++;
 
+					}
+
+					if (data.token == LEX_ID || data.token == LEX_MAIN) {
+
+						if ((entryIT.idtype == IT::IDTYPE::F) && (entryIT.iddatatype))
+						{
+							strncpy_s(data.prefix, string, PREFIX_SIZE);
+							data.visibility = true;
+
+							if (data.global) {							// было объ€влнено внешн€€ функци€ или перременна
+								strcpy_s(entryIT.prefix, VISIBLE_GLOBAL);
+								strncpy_s(entryIT.extFunct, string, EXT_FUNCTION);
+							}
+							else
+							strncpy_s(entryIT.id, string, ID_MAXSIZE);
+
+							IT::Add(*idtable, entryIT);
+						}
+						else if (entryIT.idtype == IT::IDTYPE::V && entryIT.iddatatype)
+						{	
+							if(data.visibility)
+							strncpy_s(entryIT.prefix, data.prefix, PREFIX_SIZE);
+							strncpy_s(entryIT.id, string, ID_MAXSIZE);
+							IT::Add(*idtable, entryIT);
+						}
+						else if (entryIT.iddatatype)
+						{
+							entryIT.idtype = IT::IDTYPE::P;
+							if(data.visibility)
+								strncpy_s(entryIT.prefix, data.prefix, PREFIX_SIZE);
+							strncpy_s(entryIT.id,string,ID_MAXSIZE);
+							IT::Add(*idtable, entryIT);
+						}
+						if (entryIT.iddatatype)	data.count++;
+
+						entryIT.iddatatype = IT::IDDATATYPE::NUL;
+						entryIT.idtype = IT::IDTYPE::N;
+					}
+
+					LT::Add(lextable, entryLT);
+					start = end;
 					delete[] string;
 				}
 				
-				
-
 				if (*end == '\'') {
-					if (switch_string)
-						switch_string = false;
+					if (data.switch_string)
+						data.switch_string = false;
 					else
-						switch_string = true;
+						data.switch_string = true;
 				}
 
-				if ((*end == SPACE || *end == SEPARATER) && !switch_string) {
+				if ((*end == SPACE || *end == SEPARATER) && !data.switch_string) {
 					if (*end == SEPARATER)
-						count_lines++;
+						data.count_lines++;
 					start = end;
 					start++;
 					end = start;
 				}
+
 			end++;
-
-		}
-
-		for (size_t i = 0; i < idtable->current_size; i++)
-		{
-			std::cout << "IDentif" << i << std::endl;
-			std::cout << "dt: " << idtable->table[i].iddatatype << std::endl;
-			std::cout << "dd: " << idtable->table[i].idtype << std::endl;
-			std::cout << "id: " << idtable->table[i].id << std::endl;
-
-
-		}
-		
-		int uqu = 0;
-		fout.width(4);
-		fout.setf(std::ios::left);
-		fout << lextable->table[0].sn;
-		for (size_t i = 0; i < lextable->size; i++)
-		{
-			if (uqu != lextable->table[i].sn) {
-				fout << std::endl;
-				fout.width(4);
-				fout.setf(std::ios::left);
-				fout << lextable->table[i].sn;
-				uqu = lextable->table[i].sn;
-			}
-			fout << lextable->table[i].lexema;
-		}
+		}		
 	}
 
 
-char token_rekognizer(char* string, IT::IdTable* idtable) {
+char token_rekognizer(char* string, IT::Entry* entry) {
 	bool result = false;
 
 	switch (string[0]) {
@@ -118,7 +138,7 @@ char token_rekognizer(char* string, IT::IdTable* idtable) {
 		{
 			FST::FST graph_literal(string, 3,
 				FST::NODE(1, FST::RELATION('\'', 1)),
-				FST::NODE(35,
+				FST::NODE(67,
 					FST::RELATION('a', 1),
 					FST::RELATION('b', 1),
 					FST::RELATION('c', 1),
@@ -153,6 +173,38 @@ char token_rekognizer(char* string, IT::IdTable* idtable) {
 					FST::RELATION('8', 1),
 					FST::RELATION('9', 1),
 					FST::RELATION('0', 1),
+					FST::RELATION(' ', 1),
+					FST::RELATION('а', 1),
+					FST::RELATION('б', 1),
+					FST::RELATION('в', 1),
+					FST::RELATION('г', 1),
+					FST::RELATION('д', 1),
+					FST::RELATION('е', 1),
+					FST::RELATION('Є', 1),
+					FST::RELATION('ж', 1),
+					FST::RELATION('з', 1),
+					FST::RELATION('и', 1),
+					FST::RELATION('к', 1),
+					FST::RELATION('л', 1),
+					FST::RELATION('м', 1),
+					FST::RELATION('н', 1),
+					FST::RELATION('о', 1),
+					FST::RELATION('п', 1),
+					FST::RELATION('р', 1),
+					FST::RELATION('с', 1),
+					FST::RELATION('т', 1),
+					FST::RELATION('у', 1),
+					FST::RELATION('ф', 1),
+					FST::RELATION('х', 1),
+					FST::RELATION('ц', 1),
+					FST::RELATION('ч', 1),
+					FST::RELATION('ш', 1),
+					FST::RELATION('щ', 1),
+					FST::RELATION('ъ', 1),
+					FST::RELATION('ь', 1),
+					FST::RELATION('э', 1),
+					FST::RELATION('ю', 1),
+					FST::RELATION('€', 1),
 					FST::RELATION('\'',2)),
 						FST::NODE());
 			if (result = execute(graph_literal)) {
@@ -314,7 +366,7 @@ char token_rekognizer(char* string, IT::IdTable* idtable) {
 				FST::NODE(1, FST::RELATION('e', 7)),
 				FST::NODE());
 			if (result = execute(graph_declare)) {
-				idtable->table[idtable->current_size].idtype = IT::IDTYPE::V;
+				entry->idtype = IT::IDTYPE::V;
 				return LEX_DECLARE;
 			}
 
@@ -332,7 +384,7 @@ char token_rekognizer(char* string, IT::IdTable* idtable) {
 				FST::NODE(1, FST::RELATION('n', 8)),
 				FST::NODE());
 			if (result = execute(graph_function)) {
-				idtable->table[idtable->current_size].idtype = IT::IDTYPE::F;
+				entry->idtype = IT::IDTYPE::F;
 				return LEX_FUNCTION;
 			}
 
@@ -349,31 +401,24 @@ char token_rekognizer(char* string, IT::IdTable* idtable) {
 				FST::NODE(1, FST::RELATION('r', 7)),
 				FST::NODE());
 			if (result = execute(graph_integer)) {
-				idtable->table[idtable->current_size].iddatatype = IT::IDDATATYPE::INT;
+				entry->iddatatype = IT::IDDATATYPE::INT;
 				return LEX_INTEGER;
-			}
-			FST::FST graph_if(string, 3,
-				FST::NODE(1, FST::RELATION('i', 1)),
-				FST::NODE(1, FST::RELATION('f', 2)),
-				FST::NODE());
-			if (result = execute(graph_if)) {
-				return LEX_IF;
 			}
 
 		}
 		case 'm':
 		{
-			FST::FST graph_main(string, 5,
-				FST::NODE(1, FST::RELATION('m', 1)),
-				FST::NODE(1, FST::RELATION('a', 2)),
-				FST::NODE(1, FST::RELATION('i', 3)),
-				FST::NODE(1, FST::RELATION('n', 4)),
-				FST::NODE());
+			FST::FST graph_main(string, 5, 
+				FST::NODE(1, FST::RELATION('m', 1)), 
+				FST::NODE(1, FST::RELATION('a', 2)), 
+				FST::NODE(1, FST::RELATION('i', 3)), 
+				FST::NODE(1, FST::RELATION('n', 4)), 
+				FST::NODE()); 
 			if (result = execute(graph_main)) {
-				idtable->table[idtable->current_size].idtype = IT::IDTYPE::F;
-				return LEX_MAIN;
+				entry->iddatatype = IT::IDDATATYPE::INT;
+				entry->idtype = IT::IDTYPE::F;
+				return LEX_ID; 
 			}
-
 		}
 		case 'p':
 		{
@@ -407,19 +452,43 @@ char token_rekognizer(char* string, IT::IdTable* idtable) {
 		}
 		case 's':
 		{
-			FST::FST graph_string(string, 7,
-				FST::NODE(1, FST::RELATION('s', 1)),
-				FST::NODE(1, FST::RELATION('t', 2)),
-				FST::NODE(1, FST::RELATION('r', 3)),
-				FST::NODE(1, FST::RELATION('i', 4)),
-				FST::NODE(1, FST::RELATION('n', 5)),
-				FST::NODE(1, FST::RELATION('g', 6)),
-				FST::NODE());
-			if (result = execute(graph_string)) {
-				idtable->table[idtable->current_size].iddatatype = IT::IDDATATYPE::STR;
-				return LEX_STRING;
+			FST::FST graph_strlen(string, 7, 
+				FST::NODE(1, FST::RELATION('s', 1)), 
+				FST::NODE(1, FST::RELATION('t', 2)), 
+				FST::NODE(1, FST::RELATION('r', 3)), 
+				FST::NODE(1, FST::RELATION('l', 4)), 
+				FST::NODE(1, FST::RELATION('e', 5)), 
+				FST::NODE(1, FST::RELATION('n', 6)), 
+				FST::NODE()); 
+			if (result = execute(graph_strlen)) {
+				entry->idtype = IT::IDTYPE::F;
+					return LEX_ID; 
 			}
-
+				FST::FST graph_substr(string, 7, 
+					FST::NODE(1, FST::RELATION('s', 1)), 
+					FST::NODE(1, FST::RELATION('u', 2)), 
+					FST::NODE(1, FST::RELATION('b', 3)), 
+					FST::NODE(1, FST::RELATION('s', 4)), 
+					FST::NODE(1, FST::RELATION('t', 5)), 
+					FST::NODE(1, FST::RELATION('r', 6)), 
+					FST::NODE()); 
+					if (result = execute(graph_substr)) {
+						entry->idtype = IT::IDTYPE::F;
+							return LEX_ID; 
+					}
+				FST::FST graph_string(string, 7, 
+					FST::NODE(1, FST::RELATION('s', 1)), 
+					FST::NODE(1, FST::RELATION('t', 2)), 
+					FST::NODE(1, FST::RELATION('r', 3)), 
+					FST::NODE(1, FST::RELATION('i', 4)), 
+					FST::NODE(1, FST::RELATION('n', 5)), 
+					FST::NODE(1, FST::RELATION('g', 6)), 
+					FST::NODE()); 
+					if (result = execute(graph_string)) {
+						entry->iddatatype = IT::IDDATATYPE::STR;
+							return LEX_STRING; 
+					}
+								
 		}
 		case '{':
 		{

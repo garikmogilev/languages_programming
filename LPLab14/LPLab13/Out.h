@@ -9,7 +9,7 @@ namespace Out
 	};
 
 	OUT getout(wchar_t outfile[]);
-	void writeOut(Out::OUT out, GM::Data* ptrdata);
+	//void writeOut(Out::OUT out, GM::Data* ptrdata);
 	void close(Out::OUT out);
 
 

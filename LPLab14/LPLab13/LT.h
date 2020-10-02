@@ -11,7 +11,6 @@
 #define	LEX_RETURN		'r'			// лексема для return
 #define	LEX_PRINT		'p'			// лексема для print
 #define LEX_MAIN		'm'			// лексема для main
-#define LEX_IF			'h'			// лексема для if
 #define	LEX_SEMICOLON	';'			// лексема для ;
 #define	LEX_COMMA		','			// лексема для ,
 #define	LEX_LEFTBRACE	'{'			// лексема для {
@@ -41,10 +40,11 @@ namespace LT							// таблица лексем
 		Entry* table;					// массив строк таблицы лексем
 	};
 
-	LexTable Сreate(int size);					// создать таблицу лексем
-	Entry Create(char token, int count);
-	void Add(LexTable* lextable, Entry entry);	// добавление лексем
-	Entry GetEntry(LexTable& lextable, int n);	// получить строку таблицы лексем
-	void Delete(LexTable& lextable);			// удалить таблицу лексем (освободить память)
+	LexTable Сreate(int);					// создать таблицу лексем
+	Entry Create(char, int, int&);
+	void Add(LexTable* , Entry);			// добавление лексем
+	Entry GetEntry(LexTable&, int);			// получить строку таблицы лексем
+	void PrintTableLex(LexTable*,wchar_t*);	// Напечатать таблицу лексем
+	void Delete(LexTable&);					// удалить таблицу лексем (освободить память)
 
 };
