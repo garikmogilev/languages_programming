@@ -13,19 +13,12 @@ namespace LT							// таблица лексем
 		return lexTable;
 	}
 
-	Entry Create(char token, int count, int &idInIdTable)
+	Entry Create(char token, int count)
 	{
 		Entry entry;
 		entry.lexema[0] = token;
 		entry.lexema[1] = STR_ENDL;
 		entry.sn = count;
-
-		if (token == LEX_ID) {
-			entry.idxTI = idInIdTable;
-		}
-		else
-			entry.idxTI = LT_TI_NULLXDX;
-
 		return entry;
 	}
 
@@ -42,7 +35,7 @@ namespace LT							// таблица лексем
 		fout.width(4);
 		fout.setf(std::ios::left);
 		fout << lextable->table[0].sn;
-		for (size_t i = 0; i < lextable->size; i++)
+		for (int i = 0; i < lextable->size; i++)
 		{
 			if (uqu != lextable->table[i].sn) {
 				fout << std::endl;
@@ -60,7 +53,6 @@ namespace LT							// таблица лексем
 
 	Entry GetEntry(LexTable& lextable, int n) 
 	{
-		if (n >= 0 && n < lextable.maxsize)
 			return lextable.table[n];
 	}
 	

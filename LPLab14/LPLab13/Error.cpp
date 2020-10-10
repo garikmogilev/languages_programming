@@ -32,10 +32,15 @@ namespace Error
 		ERROR_ENTRY(114,"Ошибка, в расстановке символа для литералов"),
 		ERROR_ENTRY_NODEF(115),
 		ERROR_ENTRY_NODEF(116), ERROR_ENTRY_NODEF(117), ERROR_ENTRY_NODEF(118), ERROR_ENTRY_NODEF(119),
-		ERROR_ENTRY(120,"Превышен максимальное кол-во лексем"),
-		ERROR_ENTRY(121,"Превышен размер типа integer"),
-		ERROR_ENTRY(122, "Превышен размер таблицы идентификаторов"),
-		ERROR_ENTRY(123,"Превышенf длина строки"),
+		ERROR_ENTRY(120,"Превышен размер таблицы лексем"),
+		ERROR_ENTRY(121,"Превышен диапазон типа integer"),
+		ERROR_ENTRY(122,"Превышен размер таблицы идентификаторов"),
+		ERROR_ENTRY(123,"Превышена длина строки"),
+		ERROR_ENTRY(124,"Пропущено ключевое слово для функции"),
+		ERROR_ENTRY(125,"Переинициализация функции"),
+		ERROR_ENTRY(126,"Переинициализация переменной"),
+		ERROR_ENTRY(127,"Не указан тип для функции"),
+		ERROR_ENTRY(128,"Не распознона лексема"),
 		ERROR_ENTRY_NODEF10(130), ERROR_ENTRY_NODEF10(140), ERROR_ENTRY_NODEF10(150),
 		ERROR_ENTRY_NODEF10(160), ERROR_ENTRY_NODEF10(170), ERROR_ENTRY_NODEF10(180), ERROR_ENTRY_NODEF10(190),
 		ERROR_ENTRY_NODEF100(200), ERROR_ENTRY_NODEF100(300), ERROR_ENTRY_NODEF100(400), ERROR_ENTRY_NODEF100(500),
@@ -48,13 +53,22 @@ namespace Error
 
 		ERROR* ptr = new ERROR;
 		ptr->id = id;
-
-		for (int i = 0; i < ERROR_MAX_ENTRY; i++) {
-			if (ptr->id == errors[i].id)
-				strcpy_s(ptr->message, errors[i].message);
-		}
+		strcpy_s(ptr->message, errors[id].message);
 		return *ptr;
 	};
+
+	Error::ERROR geterrorline(int id, int line)
+	{
+		if (id < 0 || id > ERROR_MAX_ENTRY) id = 0;		//если вне диапозона то ошибка 0
+
+		ERROR* ptr = new ERROR;
+
+		ptr->id = id;
+		ptr->inext.line = line;
+		strcpy_s(ptr->message, errors[id].message);
+
+		return *ptr;
+	}
 
 	Error::ERROR geterrorin(int id, int line, int col)
 	{
@@ -65,11 +79,8 @@ namespace Error
 		ptr->id = id;
 		ptr->inext.line = line;
 		ptr->inext.col = col;
-
-		for (int i = 0; i < ERROR_MAX_ENTRY; i++) {
-			if (id == errors[i].id)
-				strcpy_s(ptr->message, errors[i].message);
-		}
+		strcpy_s(ptr->message, errors[id].message);
+		
 		return *ptr;
 	}
 

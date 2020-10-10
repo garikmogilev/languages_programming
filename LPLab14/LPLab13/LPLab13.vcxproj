@@ -23,7 +23,7 @@
     <ProjectGuid>{B12B9BC1-7DAE-4650-92C5-8AAFAD00139B}</ProjectGuid>
     <RootNamespace>LPLab13</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>LPLab13</ProjectName>
+    <ProjectName>LPLab14</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -152,7 +152,7 @@
     <ClCompile Include="In.cpp" />
     <ClCompile Include="IT.cpp" />
     <ClCompile Include="Log.cpp" />
-    <ClCompile Include="LP_13.cpp" />
+    <ClCompile Include="LP_14.cpp" />
     <ClCompile Include="LT.cpp" />
     <ClCompile Include="Parm.cpp" />
   </ItemGroup>
@@ -173,6 +173,7 @@
     <Text Include="file.txt.log" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="file.txt.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -31,6 +31,12 @@ namespace LT							// таблица лексем
 		char lexema[LEXEMA_FIXSIZE+1];	// лексема
 		int sn;							// номер строки в исходном тексте
 		int idxTI;						// индекс в таблице идентификаторов или LT_TI_NULLIDX
+		Entry()
+		{
+			memset(lexema,0x00, LEXEMA_FIXSIZE + 1);
+			sn = 0;
+			idxTI = LT_TI_NULLXDX;
+		}
 	};
 
 	struct LexTable						// экземпляр таблицы лексем
@@ -41,7 +47,7 @@ namespace LT							// таблица лексем
 	};
 
 	LexTable Сreate(int);					// создать таблицу лексем
-	Entry Create(char, int, int&);
+	Entry Create(char, int);
 	void Add(LexTable* , Entry);			// добавление лексем
 	Entry GetEntry(LexTable&, int);			// получить строку таблицы лексем
 	void PrintTableLex(LexTable*,wchar_t*);	// Напечатать таблицу лексем

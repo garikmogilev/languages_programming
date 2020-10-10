@@ -1,5 +1,7 @@
 #pragma once
 #pragma warning(disable : 4996)
+#include <list>
+#include <limits>
 
 #include <tchar.h>
 #include <time.h>

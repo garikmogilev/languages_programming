@@ -118,11 +118,13 @@ namespace Log
 
 	void WriteError(LOG log, Error::ERROR error)
 	{
-		if (log.stream)
-			*(log.stream) << "Тест содержит ошибки!"
-			<< "Ошибка: " << error.id << SPACE << error.message << IN_CODE_ENDL\
-			<< "Строка:" << SPACE << error.inext.line << IN_CODE_ENDL \
-			<< "Позиция:" << SPACE << error.inext.col;
+		if (log.stream) {
+			*(log.stream) << "Тест содержит ошибки!" << IN_CODE_ENDL
+				<< "Ошибка: " << error.id << SPACE << error.message << IN_CODE_ENDL
+				<< "Строка:" << SPACE << error.inext.line << IN_CODE_ENDL;
+			if(error.inext.col != -1)
+			*(log.stream) << "Позиция:" << SPACE << error.inext.col;
+		}
 		else
 			std::cout << "Ошибка: " << error.id << SPACE << error.message << IN_CODE_ENDL;
 	}

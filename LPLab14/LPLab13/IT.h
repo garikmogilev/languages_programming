@@ -1,15 +1,14 @@
 #pragma once
-
 #define ID_MAXSIZE		5								// максимальное количество сиволов в идентификаторе
 #define	PREFIX_SIZE		10
 #define EXT_FUNCTION	10
+#define EXT_PREFIX		10
 #define TI_MAXSIZE		4096							// максимальное количество эл-ов в таблице идентификаторов 
 #define TI_INT_DEFAULT	0x00000000						// значение по умолчанию дл€ типа integer 
 #define TI_STR_DEFAULT	0x00							// значение по умолчанию дл€ типа string 
 #define TI_NULLIDX		0xffffffff						// нет элемента таблицы идентификаторов
 #define TI_STR_MAXSIZE	255
 #define VISIBLE_GLOBAL  "::"
-
 #define PARM_ID_DEFAULT_EXT L"file.id.txt"				// вывод идентификаторов и литералов
 
 namespace IT											// таблица идентификатов
@@ -19,12 +18,12 @@ namespace IT											// таблица идентификатов
 
 	struct Entry										// строка таблицы идентификаторов
 	{
-		int idxfirstLE = TI_NULLIDX;					//  
+		int idxfirstLE;									//  
 		char id[ID_MAXSIZE + 1];						// идентификатор (автоматически усекаетс€ до ID_MAXSIZE
-		char prefix[PREFIX_SIZE];	
-		char extFunct[EXT_FUNCTION];					// область видимости 
-		IDDATATYPE	iddatatype = NUL;					// тип данных
-		IDTYPE	idtype = N;								// тип идентификатора
+		char prefix[PREFIX_SIZE];						// область видимости
+		char extFunct[EXT_FUNCTION];					// внешн€€ функци€
+		IDDATATYPE iddatatype;							// тип данных
+		IDTYPE idtype ;									// тип идентификатора
 		union
 		{
 			int vint = NULL;							// значение integer
@@ -35,6 +34,16 @@ namespace IT											// таблица идентификатов
 			} 
 			vstr[TI_STR_MAXSIZE];						// значение string
 		}value;											// значение идентификатора
+
+		Entry()
+		{
+			idxfirstLE = TI_NULLIDX;
+			memset(prefix, 0x00, PREFIX_SIZE);
+			memset(id, 0x00, ID_MAXSIZE);
+			memset(extFunct, 0x00, EXT_FUNCTION);
+			iddatatype = NUL;
+			idtype = N;
+		}
 	};
 
 	struct IdTable										// экземпл€р таблицы идентификаторов
@@ -48,9 +57,10 @@ namespace IT											// таблица идентификатов
 	void Add(IdTable&, Entry);							// добавить в строку идентификаторов
 	Entry GetEntry(IdTable&, int n);					// получить строку таблицы идентификаторов
 	Entry AddLiteral(Entry&);							// 
-	int IsId(IdTable&, char[], char[]);					// возврат : возврат строки (если есть), TI_NULLIDX(если нет)
-	int IsLiteral(IdTable&, char*);							// возрат IT_TI_NULLIDX если есть уже идентичный идентификатор
-	int IsLiteral(IdTable&, int);						// 
+	int IsId(IdTable&, char[],char[],int);				// возврат : возврат строки (если есть), TI_NULLIDX(если нет)
+	int IsLiteral(IdTable&, char*);						// возрат IT_TI_NULLIDX если есть уже идентичный идентификатор
+	int IsLiteral(IdTable&, int);						// возрат IT_TI_NULLIDX если есть уже идентичный идентификатор
+	void LiteralCreate(IdTable&, char*, int, bool&);	// добавить литерал в таблицу
 	void PrintIdTable(const wchar_t* in, IdTable&);		// печать таблицы идентификаторов
 	void Delete(IdTable&);								// удалить таблицу лексем (освободить место)
 }

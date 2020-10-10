@@ -1,7 +1,8 @@
 #include "stdafx.h"
-#define TOKEN token_rekognizer(string, &entryIT);
+#define TOKEN	token_rekognizer(data.string, &ENTRY);
+#define ENTRY	idtable->table[idtable->current_size]
 
-#include "../generator_graphs/graphs.h"
+//#include "../generator_graphs/graphs.h"
 
 
 namespace GM
@@ -12,105 +13,69 @@ namespace GM
 		unsigned char* start = text;
 		unsigned char* end = start;
 		Data data;
-		IT::Entry entryIT;
+	
 		while (true)
 		{
 			if (!*end) break;
 
-				if ((!alphaCirillicDigit (*end) || !isalnum(*start)) && !data.switch_string)
+				if ((!alphaCirillicDigit (*end) || !alphaCirillicDigit(*start)) && !data.switch_string)
 				{
-					char* string = new  char[end - start + 2];
-					strncpy(string, (char*)start, end - start);
-					string[end - start] = STR_ENDL;
+					if (data.negativeValue) {
+						start--;
+						data.negativeValue = false;
+					}
+
+					data.string = new  char[end - start + 2];
+					strncpy(data.string, (char*)start, end - start);
+					data.string[end - start] = STR_ENDL;
+
+					if (*data.string == NEGATIVE && lextable->table[lextable->size - 1].lexema[0] == LEX_EQUALS)
+						data.negativeValue = true;
 
 					data.token = TOKEN;												// распознать лексему
 
-					LT::Entry entryLT = LT::Create(data.token, data.count_lines, data.count);
-					memset(entryIT.prefix, 0x00, PREFIX_SIZE);
-					memset(entryIT.id, 0x00, ID_MAXSIZE);
-					memset(entryIT.extFunct, 0x00, PREFIX_SIZE);
+					if(!data.token)
+						throw ERROR_THROW_LINE(128, data.count_lines);
 
-					if (data.token == LEX_RIGHTBRACE) { data.visibility = false, data.global = false; }
-					if (data.token == LEX_DECLARE) data.global = true;
+					LT::Entry entryLT = LT::Create(data.token, data.count_lines);
 
-					if (data.token == LEX_LITERAL)
-					{
-						if (isdigit(string[0])) {
-							int temp = atoi(string);
-							if(temp > 2147483647 && temp < -2147483647)
-								throw ERROR_THROW(121);
-							if (IsLiteral(*idtable, temp) == LT_TI_NULLXDX  || !temp) {
-								entryIT.idtype = IT::IDTYPE::L;
-								entryIT.iddatatype = IT::IDDATATYPE::INT;
-								entryIT.value.vint = temp;
-								IT::Add(*idtable, entryIT);
-								entryIT.iddatatype = IT::IDDATATYPE::NUL;
-								entryIT.idtype = IT::IDTYPE::N;
+					switch (data.token) {
+						case LEX_LEFTBRACE:
+							data.visibility_in_body = true;
+							break;
+						case LEX_RIGHTBRACE:
+							data.visibility_in_body = false;
+							memset(data.prefix, STR_ENDL, PREFIX_SIZE);
+							break;
+						case LEX_RIGHTESIS:
+							data.visibility_in_parametres = false;
+							break;
+						case LEX_DECLARE:
+							data.global = true;
+							break;
+						case LEX_LITERAL:
+							LiteralCreate(*idtable, data.string, data.count_lines,data.negativeValue);
+							break;
+						case LEX_ID:
+						case LEX_MAIN:
+							if (ENTRY.idtype == IT::IDTYPE::F)
+								if (!(bool)ENTRY.iddatatype)
+									throw ERROR_THROW_LINE(127, data.count_lines);;
+							if ((bool)ENTRY.iddatatype) 
+							{
+								IdentificatorCreate(idtable, data);
+								entryLT.idxTI = data.count;
 							}
-						}
-						else
-						{	
-							int size = strlen(string);
-							char temp[TI_STR_MAXSIZE];
-							strncpy_s(temp, (string + 1), size - 2);
-							if (size > TI_STR_MAXSIZE)
-								throw ERROR_THROW(123);
-							if (IsLiteral(*idtable, temp) == LT_TI_NULLXDX) {
-								entryIT.idtype = IT::IDTYPE::L;
-								entryIT.iddatatype = IT::IDDATATYPE::STR;
-								strcpy_s(entryIT.value.vstr->str,temp);
-								entryIT.value.vstr->len = (char)(size);
-								IT::Add(*idtable, entryIT);
-								entryIT.iddatatype = IT::IDDATATYPE::NUL;
-								entryIT.idtype = IT::IDTYPE::N;
-							}
-						}
-
-					}
-
-					if (data.token == LEX_ID || data.token == LEX_MAIN) {
-
-						if ((entryIT.idtype == IT::IDTYPE::F) && (entryIT.iddatatype))
-						{
-							strncpy_s(data.prefix, string, PREFIX_SIZE);
-							data.visibility = true;
-
-							if (data.global) {							// было объ€влнено внешн€€ функци€ или перременна
-								strcpy_s(entryIT.prefix, VISIBLE_GLOBAL);
-								strncpy_s(entryIT.extFunct, string, EXT_FUNCTION);
-							}
-							else
-							strncpy_s(entryIT.id, string, ID_MAXSIZE);
-
-							IT::Add(*idtable, entryIT);
-						}
-						else if (entryIT.idtype == IT::IDTYPE::V && entryIT.iddatatype)
-						{	
-							if(data.visibility)
-							strncpy_s(entryIT.prefix, data.prefix, PREFIX_SIZE);
-							strncpy_s(entryIT.id, string, ID_MAXSIZE);
-							IT::Add(*idtable, entryIT);
-						}
-						else if (entryIT.iddatatype)
-						{
-							entryIT.idtype = IT::IDTYPE::P;
-							if(data.visibility)
-								strncpy_s(entryIT.prefix, data.prefix, PREFIX_SIZE);
-							strncpy_s(entryIT.id,string,ID_MAXSIZE);
-							IT::Add(*idtable, entryIT);
-						}
-						if (entryIT.iddatatype)	data.count++;
-
-						entryIT.iddatatype = IT::IDDATATYPE::NUL;
-						entryIT.idtype = IT::IDTYPE::N;
+							break;
 					}
 
 					LT::Add(lextable, entryLT);
+
 					start = end;
-					delete[] string;
+					delete[] data.string;
 				}
 				
-				if (*end == '\'') {
+				if (*end == LITERAL) {
 					if (data.switch_string)
 						data.switch_string = false;
 					else
@@ -129,6 +94,57 @@ namespace GM
 		}		
 	}
 
+	void IdentificatorCreate(IT::IdTable* idtable, Data& data)
+	{
+		IT::IsId(*idtable, data.string, data.prefix, data.count_lines);
+		switch (ENTRY.idtype) {
+			case IT::IDTYPE::F:
+			{
+
+				strncpy_s(data.prefix, data.string, PREFIX_SIZE);
+				data.visibility_in_parametres = true;
+
+				if (data.global) {							// было объ€влнено внешн€€ функци€ или перременна
+					strcpy_s(ENTRY.prefix, VISIBLE_GLOBAL);
+					strncpy_s(ENTRY.extFunct, data.string, EXT_FUNCTION);
+				}
+				else
+					strncpy_s(ENTRY.id, data.string, ID_MAXSIZE);
+				ENTRY.idxfirstLE = data.count;
+				IT::Add(*idtable, ENTRY);
+				data.count++;
+				break;
+			}
+			case IT::IDTYPE::V:
+			{
+				if (data.visibility_in_body)
+					strncpy_s(ENTRY.prefix, data.prefix, PREFIX_SIZE);
+				if (!(bool)data.prefix[0])
+					strcpy_s(ENTRY.prefix, VISIBLE_GLOBAL);
+				strncpy_s(ENTRY.id, data.string, ID_MAXSIZE);
+				ENTRY.idxfirstLE = data.count;
+				IT::Add(*idtable, ENTRY);
+				data.count++;
+				break;
+			}
+			default:
+			{
+				if (!data.visibility_in_parametres)
+					throw ERROR_THROW_LINE(124, data.count_lines);
+
+				ENTRY.idtype = IT::IDTYPE::P;
+				if (data.visibility_in_parametres)
+					strncpy_s(ENTRY.prefix, data.prefix, PREFIX_SIZE);
+				strncpy_s(ENTRY.id, data.string, ID_MAXSIZE);
+				ENTRY.idxfirstLE = data.count;
+				IT::Add(*idtable, ENTRY);
+				data.count++;
+				break;
+			}
+		}
+		data.global = false;
+
+	}
 
 char token_rekognizer(char* string, IT::Entry* entry) {
 	bool result = false;
@@ -138,7 +154,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 		{
 			FST::FST graph_literal(string, 3,
 				FST::NODE(1, FST::RELATION('\'', 1)),
-				FST::NODE(67,
+				FST::NODE(69,
 					FST::RELATION('a', 1),
 					FST::RELATION('b', 1),
 					FST::RELATION('c', 1),
@@ -183,7 +199,8 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 					FST::RELATION('Є', 1),
 					FST::RELATION('ж', 1),
 					FST::RELATION('з', 1),
-					FST::RELATION('и', 1),
+					FST::RELATION('и', 1),					
+					FST::RELATION('й', 1),
 					FST::RELATION('к', 1),
 					FST::RELATION('л', 1),
 					FST::RELATION('м', 1),
@@ -202,6 +219,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 					FST::RELATION('щ', 1),
 					FST::RELATION('ъ', 1),
 					FST::RELATION('ь', 1),
+					FST::RELATION('ы', 1),
 					FST::RELATION('э', 1),
 					FST::RELATION('ю', 1),
 					FST::RELATION('€', 1),
@@ -304,7 +322,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 		case '0':
 		{
 			FST::FST graph_digit(string, 1,
-				FST::NODE(10,
+				FST::NODE(11,
 					FST::RELATION('1', 0),
 					FST::RELATION('2', 0),
 					FST::RELATION('3', 0),
@@ -314,7 +332,8 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 					FST::RELATION('7', 0),
 					FST::RELATION('8', 0),
 					FST::RELATION('9', 0),
-					FST::RELATION('0', 0)
+					FST::RELATION('0', 0), 
+					FST::RELATION('-', 0)
 				));
 			if (result = execute(graph_digit)) {
 				return LEX_LITERAL;
@@ -417,7 +436,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 			if (result = execute(graph_main)) {
 				entry->iddatatype = IT::IDDATATYPE::INT;
 				entry->idtype = IT::IDTYPE::F;
-				return LEX_ID; 
+				return LEX_MAIN; 
 			}
 		}
 		case 'p':
@@ -430,6 +449,8 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 				FST::NODE(1, FST::RELATION('t', 5)),
 				FST::NODE());
 			if (result = execute(graph_print)) {
+				/*entry->iddatatype = IT::IDDATATYPE::INT;*/
+				/*entry->idtype = IT::IDTYPE::F;*/
 				return LEX_PRINT;
 			}
 
@@ -461,7 +482,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 				FST::NODE(1, FST::RELATION('n', 6)), 
 				FST::NODE()); 
 			if (result = execute(graph_strlen)) {
-				entry->idtype = IT::IDTYPE::F;
+				/*entry->idtype = IT::IDTYPE::F;*/
 					return LEX_ID; 
 			}
 				FST::FST graph_substr(string, 7, 
@@ -473,7 +494,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 					FST::NODE(1, FST::RELATION('r', 6)), 
 					FST::NODE()); 
 					if (result = execute(graph_substr)) {
-						entry->idtype = IT::IDTYPE::F;
+						/*entry->idtype = IT::IDTYPE::F;*/
 							return LEX_ID; 
 					}
 				FST::FST graph_string(string, 7, 
@@ -549,6 +570,7 @@ char token_rekognizer(char* string, IT::Entry* entry) {
 			}
 		}
 	}
+	return 0;
 }
 
 

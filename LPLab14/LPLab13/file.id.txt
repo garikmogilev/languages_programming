@@ -1,33 +1,42 @@
-visible        variable       type           value int      value str      
-fi             z              integer        0              -              
-fs             c              string         -              0              
-main           x              integer        0              -              
-main           y              integer        0              -              
-main           z              integer        0              -              
-main           sa             string         -              0              
-main           sb             string         -              0              
-main           sc             string         -              0              
+ID table, modified time: 08-10-2020 --четверг-- 16:43:18 
 
-function       visible        type           
-fi                            integer        
-fs                            string         
-substr         ::             string         
-main                          integer        
-strlen         ::             integer        
+visible             variable            type                value int           value str           
+fi                  z                   integer             0                   -                   
+::                  x                   integer             0                   -                   
+fs                  x                   integer             0                   -                   
+fs                  c                   string              -                   0                   
+substr              w                   string              -                   0                   
+substr              wq                  string              -                   0                   
+main                x                   integer             0                   -                   
+main                y                   integer             0                   -                   
+main                z                   integer             0                   -                   
+main                q                   integer             0                   -                   
+main                sa                  string              -                   0                   
+main                sb                  string              -                   0                   
+main                sc                  string              -                   0                   
 
-visible        parametr       type           
-fi             x              integer        
-fi             y              integer        
-fs             a              string         
-fs             b              string         
-substr         a              string         
-substr         p              integer        
-substr         n              integer        
-strlen         p              string         
+visible             function            type                
+                    fi                  integer             
+                    fs                  string              
+::                  substr              string              
+                    main                integer             
+::                  strlen              integer             
 
-type           value          size           
-integer        1              ----           
-integer        3              ----           
-integer        5              ----           
-string         1234567890     12             
-integer        0              ----           
+visible             parameter           type                
+fi                  x                   integer             
+fi                  y                   integer             
+fs                  a                   string              
+fs                  b                   string              
+substr              a                   string              
+substr              p                   integer             
+substr              n                   integer             
+strlen              p                   string              
+
+type                size(string)        value
+integer             ------              1                   
+integer             ------              3                   
+integer             ------              -1234               
+integer             ------              5                   
+integer             ------              1234                
+string              10                  1234567890          
+string              24                  контрольный       пример
