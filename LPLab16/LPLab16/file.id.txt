@@ -1,0 +1,58 @@
+ID table, modified time: 03-11-2020 --вторник-- 21:36:17 
+
+visible             variable            type                idxfirstLE          value int           value str           
+                    z                   3                   integer             0                   -                   
+                    x                   4                   integer             0                   -                   
+                    z                   3                   
+                    z                   3                   
+                    x                   8                   integer             0                   -                   
+                    c                   9                   string              -                   0                   
+                    c                   9                   
+                    z                   14                  integer             0                   -                   
+                    x                   15                  integer             0                   -                   
+                    y                   16                  integer             0                   -                   
+                    w                   17                  string              -                   0                   
+                    wq                  18                  string              -                   0                   
+                    c                   9                   
+main                x                   20                  integer             0                   -                   
+main                y                   21                  integer             0                   -                   
+main                z                   22                  integer             0                   -                   
+main                q                   23                  integer             0                   -                   
+main                sa                  24                  string              -                   0                   
+main                sb                  25                  string              -                   0                   
+main                sc                  26                  string              -                   0                   
+main                x                   20                  
+main                y                   21                  
+main                z                   22                  
+main                x                   20                  
+main                y                   21                  
+main                x                   20                  
+main                z                   22                  
+
+visible             function            type                
+                    fi                  integer             
+                    fs                  string              
+                    substr              string              
+                    main                
+                    strlen              integer             
+
+visible             parameter           type                
+                    x                   integer             
+                    y                   integer             
+                    x                   
+                    y                   
+                    a                   string              
+                    b                   string              
+                    a                   string              
+                    p                   integer             
+                    n                   integer             
+                    a                   
+                    b                   
+main                p                   string              
+
+type                size(string)        value
+integer             ------              1                   
+integer             ------              3                   
+integer             ------              5                   
+string              10                  1234567890          
+integer             ------              2                   

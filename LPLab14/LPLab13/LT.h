@@ -22,18 +22,20 @@
 #define	LEX_MINUS		'v'			// лексема для -
 #define	LEX_STAR		'v'			// лексема для *
 #define	LEX_DIRSLASH	'v'			// лексема для /
-
+#define EXPRESSIONS		'v'			// лесема для всех выражений 
 
 namespace LT							// таблица лексем
 {
 	struct Entry						// строка таблицы лексем
 	{
-		char lexema[LEXEMA_FIXSIZE+1];	// лексема
-		int sn;							// номер строки в исходном тексте
-		int idxTI;						// индекс в таблице идентификаторов или LT_TI_NULLIDX
+		char lexema[LEXEMA_FIXSIZE+1];		// лексема
+		char expression[LEXEMA_FIXSIZE+1];	// выражение +,-,/,*
+		int sn;								// номер строки в исходном тексте
+		int idxTI;							// индекс в таблице идентификаторов или LT_TI_NULLIDX
 		Entry()
 		{
 			memset(lexema,0x00, LEXEMA_FIXSIZE + 1);
+			memset(expression, 0x00, LEXEMA_FIXSIZE + 1);
 			sn = 0;
 			idxTI = LT_TI_NULLXDX;
 		}

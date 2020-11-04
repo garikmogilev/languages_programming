@@ -1,4 +1,5 @@
 ﻿#include "stdafx.h"
+#include <chrono>
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -78,6 +79,7 @@ int _tmain(int argc, _TCHAR* argv[])
 #ifdef TEST5
 		Log::LOG log = Log::INITLOG; 
 	try {
+		std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
 		Parm::PARM parm = Parm::getparm(argc, argv); 
 		log = Log::getlog(parm.log);
@@ -89,12 +91,23 @@ int _tmain(int argc, _TCHAR* argv[])
 		LT::LexTable tableLEX = LT::Сreate(LT_MAXSIZE);
 		IT::IdTable idTableID = IT::Create(TI_MAXSIZE);
 		GM::dataProcesing(in.text, log.stream, &tableLEX, &idTableID);
+
 		LT::PrintTableLex(&tableLEX, parm.out);
-		IT::PrintIdTable(PARM_ID_DEFAULT_EXT, idTableID);
-		Log::Close(log); 
+		//IT::PrintIdTable(PARM_ID_DEFAULT_EXT, idTableID);
+		std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+
+		PN::seachingExpressions(tableLEX, idTableID);
 		IT::Delete(idTableID);
 		LT::Delete(tableLEX);
+		Log::Close(log);
 
+		
+
+		
+
+		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
+
+		std::cout << time_span.count() << " seconds.";
 	}
 	catch (Error::ERROR e)
 	{

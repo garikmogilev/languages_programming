@@ -31,22 +31,17 @@ namespace LT							// таблица лексем
 	void PrintTableLex(LexTable* lextable,wchar_t* out)
 	{
 		std::fstream fout(out, std::ios::out);
-		int uqu = 0;
-		fout.width(4);
-		fout.setf(std::ios::left);
-		fout << lextable->table[0].sn;
+		int uqu = 0;								//для печати с новой строки
 		for (int i = 0; i < lextable->size; i++)
 		{
 			if (uqu != lextable->table[i].sn) {
 				fout << std::endl;
-				fout.width(4);
-				fout.setf(std::ios::left);
-				fout << lextable->table[i].sn;
 				uqu = lextable->table[i].sn;
 			}
 			fout << lextable->table[i].lexema;
 			if (lextable->table[i].idxTI != LT_TI_NULLXDX)
 				fout << "(" << lextable->table[i].idxTI << ")"; //удалить
+				fout << lextable->table[i].expression;
 		}
 		fout.close();
 	}

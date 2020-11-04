@@ -1,42 +1,65 @@
-ID table, modified time: 08-10-2020 --четверг-- 16:43:18 
+ID table, modified time: 22-10-2020 --четверг-- 14:23:59 
 
-visible             variable            type                value int           value str           
-fi                  z                   integer             0                   -                   
-::                  x                   integer             0                   -                   
-fs                  x                   integer             0                   -                   
-fs                  c                   string              -                   0                   
-substr              w                   string              -                   0                   
-substr              wq                  string              -                   0                   
-main                x                   integer             0                   -                   
-main                y                   integer             0                   -                   
-main                z                   integer             0                   -                   
-main                q                   integer             0                   -                   
-main                sa                  string              -                   0                   
-main                sb                  string              -                   0                   
-main                sc                  string              -                   0                   
+visible             variable            type                idxfirstLE          value int           value str           
+                    z                   3                   integer             0                   -                   
+                    x                   4                   integer             0                   -                   
+                    z                   3                   
+                    z                   3                   
+                    x                   5                   integer             0                   -                   
+                    x                   9                   integer             0                   -                   
+                    c                   10                  string              -                   0                   
+                    c                   10                  
+                    z                   15                  integer             0                   -                   
+                    x                   16                  integer             0                   -                   
+                    y                   17                  integer             0                   -                   
+                    z                   3                   
+                    w                   18                  string              -                   0                   
+                    wq                  19                  string              -                   0                   
+                    c                   10                  
+main                x                   21                  integer             0                   -                   
+main                y                   22                  integer             0                   -                   
+main                z                   23                  integer             0                   -                   
+main                q                   24                  integer             0                   -                   
+main                sa                  25                  string              -                   0                   
+main                sb                  26                  string              -                   0                   
+main                sc                  27                  string              -                   0                   
+main                x                   21                  
+main                y                   22                  
+main                z                   23                  
+main                x                   21                  
+main                y                   22                  
+main                x                   21                  
+main                z                   23                  
 
 visible             function            type                
                     fi                  integer             
                     fs                  string              
-::                  substr              string              
-                    main                integer             
-::                  strlen              integer             
+                    substr              string              
+                    main                
+                    strlen              integer             
 
 visible             parameter           type                
-fi                  x                   integer             
-fi                  y                   integer             
-fs                  a                   string              
-fs                  b                   string              
-substr              a                   string              
-substr              p                   integer             
-substr              n                   integer             
-strlen              p                   string              
+                    x                   integer             
+                    y                   integer             
+                    x                   
+                    x                   
+                    y                   
+                    a                   string              
+                    b                   string              
+                    a                   string              
+                    p                   integer             
+                    n                   integer             
+                    a                   
+                    b                   
+                    x                   
+                    x                   
+                    y                   
+                    b                   
+main                p                   string              
 
 type                size(string)        value
 integer             ------              1                   
 integer             ------              3                   
-integer             ------              -1234               
+integer             ------              2                   
 integer             ------              5                   
-integer             ------              1234                
 string              10                  1234567890          
-string              24                  контрольный       пример

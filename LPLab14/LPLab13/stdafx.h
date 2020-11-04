@@ -1,8 +1,9 @@
 #pragma once
 #pragma warning(disable : 4996)
-#include <list>
+//#include <list>
 #include <limits>
-
+#include <stack>
+#include <string>
 #include <tchar.h>
 #include <time.h>
 #include <wchar.h>
@@ -18,6 +19,8 @@
 #include "Out.h"
 #include "LT.h"
 #include "IT.h"
+#include "PN.h"
+#include "PN.h"
 
 //#define TEST1				//  проверка ERROR
 //#define TEST2				//  проверка PARM
