@@ -1,39 +1,35 @@
-﻿Сборка начата 08.10.2020 1:39:20.
-Уровень детализации журнала: Normal.     1>Проект "D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.vcxproj" в узле 2 (целевые объекты Rebuild).
-     1>_PrepareForClean:
-         Файл "Debug\generator_graphs.tlog\generator_graphs.lastbuildstate" удаляется.
-       CoreClean:
-         Файл "D:\Projects\languages_programming\LPLab14\Debug\generator_graphs.exe.lastcodeanalysissucceeded" удаляется.
-         Файл "D:\Projects\languages_programming\LPLab14\generator_graphs\Debug\NativeCodeAnalysis.read.1.tlog" удаляется.
-       InitializeBuildStatus:
-         Создание "Debug\generator_graphs.tlog\unsuccessfulbuild", так как было задано "AlwaysCreate".
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /analyze- /FC /errorReport:prompt generator_graphs.cpp
-         generator_graphs.cpp
-     1>D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(159,32): warning C4018: <: несоответствие типов со знаком и без знака
-     1>D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(176,23): warning C4018: <: несоответствие типов со знаком и без знака
-     1>D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(200,23): warning C4018: <: несоответствие типов со знаком и без знака
-     1>D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(208,23): warning C4018: <: несоответствие типов со знаком и без знака
-     1>D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(305,22): warning C4018: <: несоответствие типов со знаком и без знака
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects\languages_programming\LPLab14\Debug\generator_graphs.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\Projects\languages_programming\LPLab14\Debug\generator_graphs.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Projects\languages_programming\LPLab14\Debug\generator_graphs.lib" /MACHINE:X86 Debug\generator_graphs.obj
-         generator_graphs.vcxproj -> D:\Projects\languages_programming\LPLab14\Debug\generator_graphs.exe
-       FinalizeBuildStatus:
-         Файл "Debug\generator_graphs.tlog\unsuccessfulbuild" удаляется.
-         Обращение к "Debug\generator_graphs.tlog\generator_graphs.lastbuildstate".
-     1>Сборка проекта "D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.vcxproj" завершена (целевые объекты Rebuild).
-
-Сборка успешно завершена.
-
-       "D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.vcxproj" (целевой объект Rebuild ) (1) ->
-       (Целевой объект ClCompile) -> 
-         D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(159,32): warning C4018: <: несоответствие типов со знаком и без знака
-         D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(176,23): warning C4018: <: несоответствие типов со знаком и без знака
-         D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(200,23): warning C4018: <: несоответствие типов со знаком и без знака
-         D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(208,23): warning C4018: <: несоответствие типов со знаком и без знака
-         D:\Projects\languages_programming\LPLab14\generator_graphs\generator_graphs.cpp(305,22): warning C4018: <: несоответствие типов со знаком и без знака
-
-    Предупреждений: 5
-    Ошибок: 0
-
-Прошло времени 00:00:04.00
+﻿  generator_graphs.cpp
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0448' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0438' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0431' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u043A' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0430' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u043E' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0442' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0440' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u044B' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u044F' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0444' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u0439' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(77,11): warning C4566: character represented by universal-character-name '\u043B' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u041E' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0448' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0438' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0431' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u043A' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0430' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u043E' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0442' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0440' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u044B' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u044F' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0444' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u0439' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(150,11): warning C4566: character represented by universal-character-name '\u043B' cannot be represented in the current code page (1252)
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(160,32): warning C4018: '<': signed/unsigned mismatch
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(177,23): warning C4018: '<': signed/unsigned mismatch
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(201,23): warning C4018: '<': signed/unsigned mismatch
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(209,23): warning C4018: '<': signed/unsigned mismatch
+D:\University\languages_programming\LPLab16\generator_graphs\generator_graphs.cpp(306,22): warning C4018: '<': signed/unsigned mismatch
+  generator_graphs.vcxproj -> D:\University\Labs\ЯП\Выполненные\LP_LAB16\Debug\generator_graphs.exe

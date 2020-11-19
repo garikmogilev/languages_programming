@@ -1,29 +1,4 @@
-﻿Сборка начата 21.10.2020 10:51:04.
-Уровень детализации журнала: Normal.     1>Проект "D:\Проекты\languages_programming\LPLab16\LPLab16\LPLab16.vcxproj" в узле 2 (целевые объекты Build).
-     1>InitializeBuildStatus:
-         Обращение к "x64\Debug\LPLab16.tlog\unsuccessfulbuild".
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt LP_14.cpp
-         LP_14.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Проекты\languages_programming\LPLab16\x64\Debug\LPLab16.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\Проекты\languages_programming\LPLab16\x64\Debug\LPLab16.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Проекты\languages_programming\LPLab16\x64\Debug\LPLab16.lib" /MACHINE:X64 x64\Debug\DP.obj
-         x64\Debug\Error.obj
-         x64\Debug\FST.obj
-         x64\Debug\In.obj
-         x64\Debug\IT.obj
-         x64\Debug\Log.obj
-         x64\Debug\LP_14.obj
-         x64\Debug\LT.obj
-         x64\Debug\Parm.obj
-         x64\Debug\PN.obj
-         LPLab16.vcxproj -> D:\Проекты\languages_programming\LPLab16\x64\Debug\LPLab16.exe
-       FinalizeBuildStatus:
-         Файл "x64\Debug\LPLab16.tlog\unsuccessfulbuild" удаляется.
-         Обращение к "x64\Debug\LPLab16.tlog\LPLab16.lastbuildstate".
-     1>Сборка проекта "D:\Проекты\languages_programming\LPLab16\LPLab16\LPLab16.vcxproj" завершена (целевые объекты Build).
-
-Сборка успешно завершена.
-    Предупреждений: 0
-    Ошибок: 0
-
-Прошло времени 00:00:01.78
+﻿  DP.cpp
+D:\University\languages_programming\LPLab16\LPLab16\DP.cpp(624,22): warning C4566: character represented by universal-character-name '\u00E0' cannot be represented in the current code page (1251)
+D:\University\languages_programming\LPLab16\LPLab16\DP.cpp(624,40): warning C4566: character represented by universal-character-name '\u00FF' cannot be represented in the current code page (1251)
+  LPLab16.vcxproj -> D:\University\languages_programming\LPLab16\x64\Debug\LPLab16.exe

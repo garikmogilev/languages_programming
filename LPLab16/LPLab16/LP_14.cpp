@@ -88,7 +88,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		In::IN in = In::getin(parm.in);
 		Log::WriteIn(log, in);
 		Log::WriteLine(log, L"Файл: ", L"считан ", L"без ", L"ошибок ", L"");
-		LT::LexTable tableLEX = LT::Сreate(LT_MAXSIZE);
+		LT::LexTable tableLEX = LT::Create(LT_MAXSIZE);
 		IT::IdTable idTableID = IT::Create(TI_MAXSIZE);
 		GM::dataProcesing(in.text, log.stream, &tableLEX, &idTableID);
 

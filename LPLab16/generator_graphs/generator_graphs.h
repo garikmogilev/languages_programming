@@ -5,8 +5,8 @@
 #include <iostream>
 
 struct GRAPH {
-	char keyword[128];				//ключевое слово
-	char retchar[128];				//возвращаемый символ
+	char keyword[256];				//ключевое слово
+	char retchar[256];				//возвращаемый символ
 	bool count_stop = false;
 };
 

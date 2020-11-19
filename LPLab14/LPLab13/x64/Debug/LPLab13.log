@@ -1,57 +1,15 @@
-﻿Сборка начата 26.09.2020 15:21:45.
-Уровень детализации журнала: Normal.     1>Проект "D:\Проекты\languages_programming\LPLab14\LPLab13\LPLab13.vcxproj" в узле 3 (целевые объекты Rebuild).
-     1>_PrepareForClean:
-         Файл "x64\Debug\LPLab13.tlog\LPLab13.lastbuildstate" удаляется.
-     1>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (LPLab14.vcxproj).  Это может привести к ошибкам очистки и перестроения.
-       InitializeBuildStatus:
-         Создание "x64\Debug\LPLab13.tlog\unsuccessfulbuild", так как было задано "AlwaysCreate".
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /Gd /TP /FC /errorReport:prompt DP.cpp Error.cpp FST.cpp In.cpp IT.cpp Log.cpp LP_13.cpp LT.cpp Out.cpp Parm.cpp
-         DP.cpp
-         Error.cpp
-         FST.cpp
-     1>D:\Проекты\languages_programming\LPLab14\LPLab13\FST.cpp(60,51): warning C4267: инициализация: преобразование из "size_t" в "short"; возможна потеря данных
-         In.cpp
-         IT.cpp
-         Log.cpp
-         LP_13.cpp
-         LT.cpp
-         Out.cpp
-         Parm.cpp
-         Создание кода...
-     1>D:\Проекты\languages_programming\LPLab14\LPLab13\LT.cpp(27): warning C4715: LT::GetEntry: значение возвращается не при всех путях выполнения
-     1>D:\Проекты\languages_programming\LPLab14\LPLab13\DP.cpp(81): warning C4715: GM::token_rekognizer: значение возвращается не при всех путях выполнения
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Проекты\languages_programming\LPLab14\x64\Debug\LPLab13.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\Проекты\languages_programming\LPLab14\x64\Debug\LPLab13.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Проекты\languages_programming\LPLab14\x64\Debug\LPLab13.lib" /MACHINE:X64 x64\Debug\DP.obj
-         x64\Debug\Error.obj
-         x64\Debug\FST.obj
-         x64\Debug\In.obj
-         x64\Debug\IT.obj
-         x64\Debug\Log.obj
-         x64\Debug\LP_13.obj
-         x64\Debug\LT.obj
-         x64\Debug\Out.obj
-         x64\Debug\Parm.obj
-         LPLab13.vcxproj -> D:\Проекты\languages_programming\LPLab14\x64\Debug\LPLab13.exe
-       FinalizeBuildStatus:
-         Файл "x64\Debug\LPLab13.tlog\unsuccessfulbuild" удаляется.
-         Обращение к "x64\Debug\LPLab13.tlog\LPLab13.lastbuildstate".
-     1>Сборка проекта "D:\Проекты\languages_programming\LPLab14\LPLab13\LPLab13.vcxproj" завершена (целевые объекты Rebuild).
-
-Сборка успешно завершена.
-
-       "D:\Проекты\languages_programming\LPLab14\LPLab13\LPLab13.vcxproj" (целевой объект Rebuild ) (1) ->
-       (Целевой объект PrepareForBuild) -> 
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (LPLab14.vcxproj).  Это может привести к ошибкам очистки и перестроения.
-
-
-       "D:\Проекты\languages_programming\LPLab14\LPLab13\LPLab13.vcxproj" (целевой объект Rebuild ) (1) ->
-       (Целевой объект ClCompile) -> 
-         D:\Проекты\languages_programming\LPLab14\LPLab13\FST.cpp(60,51): warning C4267: инициализация: преобразование из "size_t" в "short"; возможна потеря данных
-         D:\Проекты\languages_programming\LPLab14\LPLab13\LT.cpp(27): warning C4715: LT::GetEntry: значение возвращается не при всех путях выполнения
-         D:\Проекты\languages_programming\LPLab14\LPLab13\DP.cpp(81): warning C4715: GM::token_rekognizer: значение возвращается не при всех путях выполнения
-
-    Предупреждений: 4
-    Ошибок: 0
-
-Прошло времени 00:00:10.64
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (LPLab13.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  DP.cpp
+  Error.cpp
+  FST.cpp
+D:\University\languages_programming\LPLab14\LPLab13\FST.cpp(61,51): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  In.cpp
+  IT.cpp
+D:\University\languages_programming\LPLab14\LPLab13\IT.cpp(102,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Log.cpp
+  LP_14.cpp
+  LT.cpp
+  Parm.cpp
+  PN.cpp
+  Generating Code...
+  LPLab13.vcxproj -> D:\University\languages_programming\LPLab14\x64\Debug\LPLab14.exe

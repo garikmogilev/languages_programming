@@ -1,9 +1,9 @@
 ﻿#include "generator_graphs.h"
 
-constexpr auto LEXEMA_FIXSIZE = 2;			// фиксированный размер лексемы;
+constexpr auto LEXEMA_FIXSIZE = 3;			// фиксированный размер лексемы;
 constexpr auto NAMEFILE = "graphs_in.txt";	// название входного файла
 constexpr auto NAMEOUTFILE = "graphs.h";	// название для печати графов
-constexpr auto SYMBOL_END_DEFINED = '\\';	// 
+constexpr auto SYMBOL_END_DEFINED = "";//'\\';	// 
 constexpr auto FORMAT_TAB_1 = '\t';
 constexpr auto FORMAT_TAB_2 = "\t\t";
 constexpr auto FORMAT_TAB_3 = "\t\t\t";
@@ -23,6 +23,7 @@ std::fstream fout(NAMEOUTFILE, std::ios_base::out);
 
 int main()
 {
+	setlocale(LC_ALL, "rus");
 	GRAPH graph[128];
 	char text[1024];
 

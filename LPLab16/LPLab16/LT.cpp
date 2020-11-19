@@ -2,7 +2,7 @@
 
 namespace LT							// таблица лексем
 {
-	LexTable Сreate(int size) 
+	LexTable Create(int size) 
 	{
 
 		LexTable lexTable;
